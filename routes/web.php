@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::resource('/', 'antrian\poli\queuePoliController');
+Route::get('api/queue/poli/{id}', 'antrian\poli\queuePoliController@apiFindQueue')->name('cari.antrian');

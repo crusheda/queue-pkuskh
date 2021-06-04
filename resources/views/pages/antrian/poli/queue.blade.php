@@ -26,7 +26,7 @@
         <hr>
         <div class="lower">
             <h4>ANTRIAN ANDA</h4>
-            <h1 style="margin-bottom: 40px"><kbd>{{ $list['show']->queue }}</kbd></h1>
+            <h1 style="margin-bottom: 40px"><kbd style="background-color: rgb(3, 150, 241)">{{ $list['show']->queue }}</kbd></h1>
             <hr>
             <div class="text-left" style="margin-left:20px">
                 <h5>No.Rekam Medik : <b>{{ $list['show']->no_rm }}</b></h5>
@@ -55,6 +55,25 @@ $(document).ready( function () {
     setInterval(function () {
         $.ajax({
             url: "http://localhost:8000/api/queue/poli/{{ $list['kode'] }}",
+            type: 'GET',
+            dataType: 'json', // added data type
+            success: function(res) {
+                // $("#queue").empty();
+                // console.log(res.id);
+                var d = new Date();
+                var time = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+                document.getElementById("date").innerHTML = time;
+                // document.getElementById("queue").empty();
+                document.getElementById("queue").innerHTML = res.queue;
+                // $.each(res, function(index, el) {
+                //     $("#queue").append(el.id);
+                // });
+            }
+        });
+    },10000);
+    setInterval(function () {
+        $.ajax({
+            url: "http://simrsku.com/api/queue/poli/{{ $list['kode'] }}",
             type: 'GET',
             dataType: 'json', // added data type
             success: function(res) {

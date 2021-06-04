@@ -25,7 +25,7 @@
             <h5 class="text-center" style="margin-top:20px"><b>Antrian Poliklinik</b></h5>
             <form action="{{ route('store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="form-element"> <span id="input-header">Nomor Rekam Medik</span> <input type="number" name="no_rm" onKeyPress="if(this.value.length==6) return false;" required autofocus> </div>
+                <div class="form-element"> <span id="input-header"><b>Nomor Rekam Medik</b></span> <input type="number" name="no_rm" onKeyPress="if(this.value.length==6) return false;" required autofocus> </div>
                 @if(session('message'))
                     <div class="row mb-2">
                         <div class="col-lg-12">

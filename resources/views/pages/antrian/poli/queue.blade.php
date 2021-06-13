@@ -90,6 +90,25 @@ $(document).ready( function () {
             }
         });
     },10000);
+    setInterval(function () {
+        $.ajax({
+            url: "http://192.168.1.3:8000/api/queue/poli/{{ $list['kode'] }}",
+            type: 'GET',
+            dataType: 'json', // added data type
+            success: function(res) {
+                // $("#antrian").empty();
+                // console.log(res.id);
+                var d = new Date();
+                var time = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+                document.getElementById("date").innerHTML = time;
+                // document.getElementById("queue").empty();
+                document.getElementById("queue").innerHTML = res.queue;
+                // $.each(res, function(index, el) {
+                //     $("#queue").append(el.id);
+                // });
+            }
+        });
+    },10000);
 });
 </script>
 </html>
